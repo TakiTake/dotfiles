@@ -1,0 +1,40 @@
+[include]
+  path = .gitconfig.local
+[http]
+  sslVerify = false
+[push]
+  default = current
+[core]
+  editor = nvim
+  autocrlf = false
+[diff]
+  renameLimit = 2000
+[merge]
+  tool = vimdiff
+[color]
+  ui = true
+[alias]
+  add  = add --ignore-removal
+  br   = branch
+  c-p  = cherry-pick
+  ci   = commit
+  cl   = clone
+  co   = checkout
+  coo  = checkout --ours
+  cot  = checkout --theirs
+  del  = "!sh -c 'git_branch_delete $1' -"
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  mg   = merge
+  pull = pull --tags
+  rb   = rebase
+  rba  = rebase --abort
+  rbc  = rebase --continue
+  rbs  = rebase --skip
+  st   = status
+  shallow = clone --depth=1 --single-branch --branch
+[github]
+  user = TakiTake
+[ghq]
+  root = ~/src
+[fetch]
+  prune = true

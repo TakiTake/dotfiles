@@ -1,0 +1,46 @@
+#=============
+# Colorscheme
+#=============
+[[plugins]]
+repo = 'chriskempson/base16-vim'
+
+#========
+# denite
+#========
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+
+#========
+# Search
+#========
+[[plugins]]
+repo = 'easymotion/vim-easymotion'
+
+[[plugins]]
+repo = 'haya14busa/incsearch.vim'
+
+[[plugins]]
+repo = 'haya14busa/incsearch-easymotion.vim'
+
+#======
+# Util
+#======
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+
+[[plugins]]
+repo = 'vim-scripts/surround.vim'
+
+[[plugins]] # close quote
+repo = 'vim-scripts/AutoClose'
+
+[[plugins]] # close if-end, if-fi, if { }
+repo = 'vim-scripts/endwise.vim'
+
+#========
+# Golang
+#========
+[[plugins]]
+repo = 'fatih/vim-go'
+on_ft = 'go'

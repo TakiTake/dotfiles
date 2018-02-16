@@ -1,0 +1,4 @@
+*.swp
+.ruby-version
+.ssh/known_hosts
+.envrc
