@@ -40,8 +40,8 @@ export PATH=~/bin:"${PATH}"
 
 # Golang
 export GOPATH="${HOME}"
-export GOROOT="${HOME}/go"
 export GOBIN="${GOPATH}/go/bin"
+export GO111MODULE=on
 export PATH="${GOBIN}:${PATH}"
 
 # Vagrant

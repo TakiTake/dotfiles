@@ -6,3 +6,4 @@ alias gco="git checkout"
 alias gl="git log"
 alias gm="git merge"
 alias gs="git status"
+gr(){ cd $(git rev-parse --show-toplevel) }

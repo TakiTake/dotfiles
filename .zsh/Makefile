@@ -10,4 +10,4 @@ check:
 	zsh -fc "zcompile $*"
 
 clean:
--@rm -f $(TARGET)
+	-@rm -f $(TARGET)

@@ -2,3 +2,8 @@
 .ruby-version
 .ssh/known_hosts
 .envrc
+.terraform
+*.tfstate
+*.tfstate.backup
+.kubeconfig
+kaniko-secret.json

@@ -26,3 +26,14 @@ zplug load
 
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+
+eval "$(rbenv init -)"
+eval "$(direnv hook zsh)"
+eval "$(starship init zsh)"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/takizawatakeshi/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/takizawatakeshi/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/takizawatakeshi/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/takizawatakeshi/google-cloud-sdk/completion.zsh.inc'; fi
+export PATH="/usr/local/sbin:$PATH"

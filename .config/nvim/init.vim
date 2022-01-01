@@ -57,6 +57,18 @@ colorscheme base16-default-dark
 set list
 set listchars=tab:>>,trail:-,extends:»,precedes:«,nbsp:%
 
+" Left margin
+set foldcolumn=1
+highlight FoldColumn ctermbg=Black
+
+" tab
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set autoindent
+set smartindent
+
 " swap ; :
 nnoremap ; :
 nnoremap : ;

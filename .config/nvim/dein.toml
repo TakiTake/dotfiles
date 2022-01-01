@@ -5,10 +5,10 @@
 repo = 'chriskempson/base16-vim'
 
 #========
-# denite
+# ddu
 #========
-[[plugins]]
-repo = 'Shougo/denite.nvim'
+#[[plugins]]
+#repo = 'Shougo/ddu.nvim'
 
 #========
 # Search
@@ -38,9 +38,31 @@ repo = 'vim-scripts/AutoClose'
 [[plugins]] # close if-end, if-fi, if { }
 repo = 'vim-scripts/endwise.vim'
 
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+
+[[plugins]] # preview Markdown
+repo = 'kannokanno/previm'
+on_ft = 'markdown'
+
+[[plugins]] # light filer
+repo = 'justinmk/vim-dirvish'
+
+#=====
+# Git
+#=====
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
 #========
 # Golang
 #========
 [[plugins]]
 repo = 'fatih/vim-go'
 on_ft = 'go'
+
+#======
+# Deno
+#======
+[[plugings]]
+repo = 'vim-denops/denops.vim'

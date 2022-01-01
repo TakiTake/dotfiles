@@ -5,8 +5,9 @@
 [push]
   default = current
 [core]
-  editor = nvim
-  autocrlf = false
+  editor       = nvim
+  autocrlf     = false
+  excludesfile = ~/.gitignore
 [diff]
   renameLimit = 2000
 [merge]
@@ -32,9 +33,13 @@
   rbs  = rebase --skip
   st   = status
   shallow = clone --depth=1 --single-branch --branch
+	wild = push --force origin
 [github]
   user = TakiTake
 [ghq]
   root = ~/src
 [fetch]
   prune = true
+[user]
+  name  = Takeshi Takizawa
+  email = takitake.create@gmail.com
