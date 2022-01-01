@@ -31,9 +31,10 @@
   rba  = rebase --abort
   rbc  = rebase --continue
   rbs  = rebase --skip
+  root = rev-parse --show-toplevel
   st   = status
   shallow = clone --depth=1 --single-branch --branch
-	wild = push --force origin
+  wild = push --force origin
 [github]
   user = TakiTake
 [ghq]
