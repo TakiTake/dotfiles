@@ -1,4 +1,4 @@
-alias -g B='`git branch -a | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*\s*//g"`'
+alias -g B='$(git branch -a | fzf --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^ *\*\? *//" -e "s|remotes/origin/||g")'
 alias c="cat"
 alias diffy="diff -y -W 150"
 alias eth0="ip addr show eth0 | grep -Eo 'inet [0-9.]+'"
