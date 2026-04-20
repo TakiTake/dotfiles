@@ -2,7 +2,7 @@ typeset -gx -U path
 path=( \
     /usr/local/bin(N-/) \
     ~/bin(N-/) \
-    ~/.zplug/bin(N-/) \
+    ~/.local/share/mise/shims(N-/) \
     "$path[@]" \
     )
 
@@ -11,7 +11,6 @@ typeset -gx -U fpath
 fpath=( \
     ~/.zsh/Completion(N-/) \
     ~/.zsh/functions(N-/) \
-    ~/.zsh/plugins/zsh-completions(N-/) \
     /usr/local/share/zsh/site-functions(N-/) \
     $fpath \
 )
@@ -22,7 +21,6 @@ autoload -Uz add-zsh-hook
 autoload -Uz colors && colors
 autoload -Uz compinit && compinit -u
 autoload -Uz is-at-least
-autoload -Uz groot
 
 # LANGUAGE must be set by en_US
 export LANGUAGE="en_US.UTF-8"
@@ -53,5 +51,3 @@ export HISTFILE=~/.zsh_history
 export HISTSIZE=1000000
 export SAVEHIST=1000000
 
-# fzf - command-line fuzzy finder (https://github.com/junegunn/fzf)
-export FZF_DEFAULT_OPTS="--extended --ansi --multi"
