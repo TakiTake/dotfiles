@@ -24,6 +24,18 @@ function fzf-ghq-cd() {
 zle -N fzf-ghq-cd
 bindkey '^g^g' fzf-ghq-cd
 
+# cd to git worktree (^g^w)
+function fzf-git-worktree-cd() {
+  local dir
+  dir=$(git worktree list 2>/dev/null | fzf --prompt="worktree> " | awk '{print $1}')
+  if [[ -n "$dir" ]]; then
+    BUFFER="cd ${(q)dir}"
+    zle accept-line
+  fi
+}
+zle -N fzf-git-worktree-cd
+bindkey '^g^w' fzf-git-worktree-cd
+
 # insert history entry at cursor (^g^h)
 function fzf-put-history() {
   local cmd
