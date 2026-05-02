@@ -4,28 +4,60 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 DOTFILES_TO_LINK=(.gitconfig .vimrc .zsh .zshenv .zshrc)
 
+FORCE=false
+for arg in "$@"; do
+  case "$arg" in
+    -f|--force) FORCE=true ;;
+    -h|--help)
+      cat <<EOF
+Usage: $(basename "$0") [-f|--force]
+
+  -f, --force   Recreate existing symlinks (unlink, then link again).
+                Real files/directories are never touched.
+  -h, --help    Show this help message.
+EOF
+      exit 0 ;;
+    *)
+      echo "Unknown option: $arg" >&2
+      exit 1 ;;
+  esac
+done
+
+# Link $1 -> $2. Existing real files/dirs are skipped (never removed).
+# Existing symlinks are kept as-is, unless --force is set, in which case
+# they are unlinked and recreated.
+link() {
+  local src="$1" dst="$2" label="$3"
+
+  if [ -L "$dst" ]; then
+    if [ "$FORCE" = true ]; then
+      unlink "$dst"
+    else
+      echo "  ✓ $label (symlink already present)"
+      return
+    fi
+  elif [ -e "$dst" ]; then
+    echo "  ⚠ Skipping $label (real file/dir at destination — leaving untouched)"
+    return
+  fi
+
+  ln -s "$src" "$dst"
+  echo "  ✓ Linked $label"
+}
+
 echo "📦 Installing dotfiles from $SCRIPT_DIR..."
+[ "$FORCE" = true ] && echo "  (force mode: existing symlinks will be recreated)"
 
 # 1. Symlink root dotfiles
 for dotfile in "${DOTFILES_TO_LINK[@]}"; do
-  src="$SCRIPT_DIR/$dotfile"
-  dst="$HOME/$dotfile"
-
-  if [ -e "$dst" ] && [ ! -L "$dst" ]; then
-    echo "  ⚠ Skipping $dotfile (already exists, not a symlink)"
-    continue
-  fi
-
-  ln -sfn "$src" "$dst"
-  echo "  ✓ Linked $dotfile"
+  link "$SCRIPT_DIR/$dotfile" "$HOME/$dotfile" "$dotfile"
 done
 
 # 2. Symlink .config/
 mkdir -p "$HOME/.config"
 for item in "$SCRIPT_DIR"/.config/*; do
   name=$(basename "$item")
-  ln -sfn "$item" "$HOME/.config/$name"
-  echo "  ✓ Linked .config/$name"
+  link "$item" "$HOME/.config/$name" ".config/$name"
 done
 
 # 3. Install oh-my-zsh plugins
